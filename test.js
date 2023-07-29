@@ -25,7 +25,7 @@ function distance1() {
         // Get the user's latitude and longitude coordinates
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        alt = position.coords.altitude;
+        alt = (position.coords.altitude) * 3.28084;
 
         // Do something with the location data, e.g. display on a map
         console.log(`1 Latitude: ${lat}, longitude: ${lng}, altitude: ${alt}`);
@@ -48,7 +48,7 @@ function distance2() {
         // Get the user's latitude and longitude coordinates
         lat2 = position.coords.latitude;
         lng2 = position.coords.longitude;
-        alt2 = position.coords.altitude;
+        alt2 = (position.coords.altitude) * 3.28084;
 
         // Do something with the location data, e.g. display on a map
         console.log(`2 Latitude: ${lat}, longitude: ${lng}, altitude: ${alt}`);
