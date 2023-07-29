@@ -6,6 +6,12 @@ var alt = 0;
 var lat2 = 0;
 var lng2 = 0;
 var alt2 = 0;
+var distanceInKilometers = null;
+var radius = null;
+var startingLat = null;
+var startinglong = null;
+var destinationLat = null;
+var destinationLong = null;
 // geoLocation1.addEventListener("click", distance1());
 //
 // geoLocation2.addEventListener("click", distance2());
@@ -49,7 +55,7 @@ function distance2() {
         document.getElementById("lat2").innerText = lat2;
         document.getElementById("lng2").innerText = lng2;
         document.getElementById("alt2").innerText = alt2;
-        calculations();
+        calculations(lat, lng, lat2, lng2);
         altCalc();
       },
     );
@@ -62,29 +68,28 @@ function degreesToRadians(degrees) {
 };
 
   // Function takes two objects, that contain coordinates to a starting and destination location.
-function calculations(){
-  let startingLat = degreesToRadians(lat);
-  let startingLong = degreesToRadians(lng);
-  let destinationLat = degreesToRadians(lat2);
-  let destinationLong = degreesToRadians(lng2);
+function calculations(lat, lng, lat2, lng2){
+  startingLat = degreesToRadians(lat);
+  startingLong = degreesToRadians(lng);
+  destinationLat = degreesToRadians(lat2);
+  destinationLong = degreesToRadians(lng2);
 
   // Radius of the Earth in kilometers
-  let radius = 6571;
+  radius = 6571;
 
   // Haversine equation
-  let distanceInKilometers = Math.acos(Math.sin(startingLat) * Math.sin(destinationLat) +
+  distanceInKilometers = Math.acos(Math.sin(startingLat) * Math.sin(destinationLat) +
   Math.cos(startingLat) * Math.cos(destinationLat) *
   Math.cos(startingLong - destinationLong)) * radius;
 
-  return distanceInKilometers;
   yards = distanceInKilometers * 1093.61;
 
-  document.getElementById("distance").innerText = yards;
+  document.getElementById("distance").innerText = 'Distance between targets = ' + yards;
 
 };
 
 function altCalc() {
   var altCalc = alt - alt2;
-  document.getElementById("alt-distance").innerText = altCalc;
+  document.getElementById("alt-distance").innerText = 'Altitude change = ' + altCalc;
 
 }
