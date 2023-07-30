@@ -61,6 +61,18 @@ function distance2() {
     );
   };
 
+function distanceManual() {
+  lat2 = parseFloat(document.getElementById("latManual").value);
+  lng2 = document.getElementById("lngManual").value;
+
+  console.log(`2 Latitude: ${lat}, longitude: ${lng}, altitude: ${alt}`);
+  document.getElementById("lat2").innerText = lat2;
+  document.getElementById("lng2").innerText = lng2;
+  document.getElementById("alt2").innerText = alt2;
+  calculations(lat, lng, lat2, lng2);
+  altCalc();
+}
+
 // Convert from degrees to radians
 function degreesToRadians(degrees) {
   var radians = (degrees * Math.PI)/180;
