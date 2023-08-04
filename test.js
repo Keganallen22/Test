@@ -6,6 +6,8 @@ var alt = 0;
 var lat2 = 0;
 var lng2 = 0;
 var alt2 = 0;
+var accuracy = 0;
+var accuracy2 = 0;
 var distanceInKilometers = null;
 var radius = null;
 var startingLat = null;
@@ -26,12 +28,16 @@ function distance1() {
         lat = position.coords.latitude;
         lng = position.coords.longitude;
         alt = (position.coords.altitude) * 3.28084;
+        accuracy = (position.coords.accuracy) * 3.28084;
 
         // Do something with the location data, e.g. display on a map
         console.log(`1 Latitude: ${lat}, longitude: ${lng}, altitude: ${alt}`);
+        console.log(accuracy);
         document.getElementById("lat").innerText = lat;
         document.getElementById("lng").innerText = lng;
         document.getElementById("alt").innerText = alt;
+        document.getElementById("acc").innerText = accuracy;
+
       },
     );
 
@@ -49,12 +55,15 @@ function distance2() {
         lat2 = position.coords.latitude;
         lng2 = position.coords.longitude;
         alt2 = (position.coords.altitude) * 3.28084;
+        accuracy2 = (position.coords.accuracy) * 3.28084;
 
         // Do something with the location data, e.g. display on a map
         console.log(`2 Latitude: ${lat}, longitude: ${lng}, altitude: ${alt}`);
         document.getElementById("lat2").innerText = lat2;
         document.getElementById("lng2").innerText = lng2;
         document.getElementById("alt2").innerText = alt2;
+        document.getElementById("acc2").innerText = accuracy2;
+
         calculations(lat, lng, lat2, lng2);
         altCalc();
       },
